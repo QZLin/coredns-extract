@@ -27,20 +27,27 @@ jobs:
         with:
           repository: qzlin/forward
           path: forward
-      - run: ls
-      - name: Extract forward and split history
-        run: . ./actions.ps1
-      - name: Commit and push
+      # - run: ls
+
+      - name: Set Git Info
         run: |
-          Push-Location forward
           git config --global user.email "qzlin01@163.com"
           git config --global user.name "QZLin"
 
-          git branch main
-          git switch main
+      - name: Extract forward and split history
+        run: . ./actions.ps1
+
+      - name: Commit and push
+        run: |
+          Push-Location forward
+          # git config --global user.email "qzlin01@163.com"
+          # git config --global user.name "QZLin"
+
+          # git branch main
+          # git switch main
           git remote add origin https://${{ secrets.TOKEN }}@github.com/QZLin/forward.git
 
-          git push --set-upstream origin main --force
+          git push --set-upstream origin master --force
           Pop-Location
 
       - uses: actions/upload-artifact@v2
