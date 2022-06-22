@@ -14,7 +14,7 @@ python ../git-filter-repo.py --path plugin/forward --subdirectory-filter plugin/
 Pop-Location
 
 Push-Location forward
-git pull ../coredns
+git pull ../coredns --allow-unrelated-histories
 Pop-Location
 
 

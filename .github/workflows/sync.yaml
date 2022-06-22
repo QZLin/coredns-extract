@@ -19,6 +19,14 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          repository: coredns/coredns
+          path: coredns
+      - uses: actions/checkout@v3
+        with:
+          repository: qzlin/forward
+          path: forward
       - run: ls
       - name: Extract forward and split history
         run: . ./actions.ps1
