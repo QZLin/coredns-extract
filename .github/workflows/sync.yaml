@@ -23,10 +23,12 @@ jobs:
         with:
           repository: coredns/coredns
           path: coredns
+          fetch-depth: 0
       - uses: actions/checkout@v3
         with:
           repository: qzlin/forward
           path: forward
+          fetch-depth: 0
       # - run: ls
 
       - name: Set Git Info
