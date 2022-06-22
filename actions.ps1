@@ -20,6 +20,12 @@ Pop-Location
 Push-Location forward
 git pull ../coredns --allow-unrelated-histories
 git log -3
+## Remove empty merge commit for actions server git
+if (-not $local_debug) {
+    $last = git log -1 --skip=1 --format=%H
+    git reset --hard $last
+}
+git log -3
 Pop-Location
 
 
