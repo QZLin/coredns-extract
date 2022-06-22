@@ -1,7 +1,7 @@
 Push-Location $PSScriptRoot
 
-# git clone https://github.com/coredns/coredns.git
-# git clone https://github.com/qzlin/forward.git
+git clone https://github.com/coredns/coredns.git
+git clone https://github.com/qzlin/forward.git
 
 # local test repo cache
 # git clone local_cache/coredns
