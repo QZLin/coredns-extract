@@ -42,11 +42,11 @@ jobs:
       - name: Extract forward and split history
         run: . ./actions.ps1
         
-      - name: Setup ssh key
-        run: |
-          New-Item -ItemType Directory ~/.ssh -ErrorAction SilentlyContinue
-          Write-Output "${{ secrets.BOT_ID_RSA }}" > ~/.ssh/id_rsa
-          Write-Output "${{ secrets.BOT_ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
+      # - name: Setup ssh key
+      #   run: |
+      #     New-Item -ItemType Directory ~/.ssh -ErrorAction SilentlyContinue
+      #     Write-Output "${{ secrets.BOT_ID_RSA }}" > ~/.ssh/id_rsa
+      #     Write-Output "${{ secrets.BOT_ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
 
       - name: Commit and push
         run: |
@@ -54,11 +54,14 @@ jobs:
           git config --global user.email "qzlin01@163.com"
           git config --global user.name "QZLin"
 
-          git remote set-url origin git@github.com:QZLin/forward.git
+          git remote set-url origin https://$USERNAME:$TOKEN@github.com/qzlin/forward.git
 
           # git push --set-upstream origin master --force
           git push
           Pop-Location
+        env:
+          TOKEN: ${{secrets.PUSH_TOKEN}}
+          USERNAME: github-actions[bot]
 
       - uses: actions/upload-artifact@v2
         with:
