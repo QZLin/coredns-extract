@@ -58,6 +58,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          directory: forward
           branch: main
 
       - uses: actions/upload-artifact@v2
