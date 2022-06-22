@@ -17,7 +17,7 @@ jobs:
       run:
         shell: pwsh
     runs-on: windows-latest
-    
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
@@ -49,9 +49,10 @@ jobs:
 
           # git branch main
           # git switch main
-          git remote add origin https://${{ secrets.TOKEN }}@github.com/QZLin/forward.git
+          git remote set-url origin https://${{ secrets.TOKEN }}@github.com/QZLin/forward.git
 
-          git push --set-upstream origin master --force
+          # git push --set-upstream origin master --force
+          git push
           Pop-Location
 
       - uses: actions/upload-artifact@v2

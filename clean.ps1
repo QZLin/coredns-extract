@@ -1,4 +1,4 @@
 Push-Location $PSScriptRoot
-Remove-Item coredns -Force -ErrorAction Ignore
-Remove-Item forward -Force -ErrorAction Ignore
+Remove-Item coredns -Recurse -Force -ErrorAction SilentlyContinue -Confirm:$false
+Remove-Item forward -Recurse -Force -ErrorAction SilentlyContinue -Confirm:$false
 Pop-Location
