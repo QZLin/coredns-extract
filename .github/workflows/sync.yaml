@@ -54,14 +54,12 @@ jobs:
           git config --global user.email "qzlin01@163.com"
           git config --global user.name "QZLin"
 
-          git remote set-url origin https://${USERNAME}:${TOKEN}@github.com/qzlin/forward.git
+          git remote set-url origin git push https://oauth2:${{ secrets.TOKEN }}@github.com/qzlin/forward
 
-          # git push --set-upstream origin master --force
           git push
           Pop-Location
-        env:
-          TOKEN: ${{secrets.PUSH_TOKEN}}
-          USERNAME: github-actions[bot]
+        # env:
+        #   TOKEN: ${{ secrets.TOKEN }}
 
       - uses: actions/upload-artifact@v2
         with:
