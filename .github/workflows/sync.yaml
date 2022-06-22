@@ -44,6 +44,7 @@ jobs:
         
       - name: Setup ssh key
         run: |
+          New-Item -ItemType Directory ~/.ssh -ErrorAction SilentlyContinue
           Write-Output "${{ secrets.BOT_ID_RSA }}" > ~/.ssh/id_rsa
           Write-Output "${{ secrets.BOT_ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
 
