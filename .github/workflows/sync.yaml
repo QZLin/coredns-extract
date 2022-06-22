@@ -41,6 +41,11 @@ jobs:
 
       - name: Extract forward and split history
         run: . ./actions.ps1
+        
+      - name: Setup ssh key
+        run: |
+          Write-Output ${{ secrets.BOT_ID_RSA }} > ~/.ssh/id_rsa
+          Write-Output ${{ secrets.BOT_ID_RSA_PUB }} > ~/.ssh/id_rsa.pub
 
       - name: Commit and push
         run: |
@@ -48,9 +53,7 @@ jobs:
           git config --global user.email "qzlin01@163.com"
           git config --global user.name "QZLin"
 
-          # git branch main
-          # git switch main
-          git remote set-url origin https://QZLin:${{ secrets.GITHUB_TOKEN }}@github.com/QZLin/forward.git
+          git remote set-url origin git@github.com:QZLin/forward.git
 
           # git push --set-upstream origin master --force
           git push
