@@ -3,8 +3,8 @@ name: Sync Repo
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  #   push:
-  #     branches: [main]
+  push:
+    branches: [main]
   #   pull_request:
   #     branches: [main]
 
@@ -19,8 +19,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
+      - run: ls
       - name: Extract forward and split history
-        run: . actions.ps1
+        run: ./actions.ps1
       - name: Commit and push
         run: |
           Push-Location forward
