@@ -32,7 +32,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
       - name: Get git-filter-repo
-        run: Invoke-WebRequest https://raw.githubusercontent.com/newren/git-filter-repo/main/git-filter-repo -OutFile git-filter-repo.py
+        run: Invoke-WebRequest https://github.com/newren/git-filter-repo/raw/main/git-filter-repo -OutFile git-filter-repo.py
 
       - name: Set Git Info
         run: |
@@ -48,15 +48,13 @@ jobs:
       #     Write-Output "${{ secrets.BOT_ID_RSA }}" > ~/.ssh/id_rsa
       #     Write-Output "${{ secrets.BOT_ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
 
-      - name: Commit and push
+      - name: Pull and push
         run: |
           Push-Location forward
-          git config --global user.email "qzlin01@163.com"
-          git config --global user.name "QZLin"
 
-          git remote set-url origin https://oauth2:${{ secrets.TOKEN }}@github.com/qzlin/forward
-
+          git remote set-url origin https://oauth2:${{ secrets.TOKEN }}@github.com/QZLin/forward
           git push
+          
           Pop-Location
         # env:
         #   TOKEN: ${{ secrets.TOKEN }}
