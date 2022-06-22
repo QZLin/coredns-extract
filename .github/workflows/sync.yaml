@@ -41,26 +41,21 @@ jobs:
       - name: Extract forward and split history
         run: . ./actions.ps1
 
-      # - name: Commit and push
-      #   run: |
-      #     Push-Location forward
-      #     # git config --global user.email "qzlin01@163.com"
-      #     # git config --global user.name "QZLin"
+      - name: Commit and push
+        run: |
+          Push-Location forward
+          # git config --global user.email "qzlin01@163.com"
+          # git config --global user.name "QZLin"
 
-      #     # git branch main
-      #     # git switch main
-      #     git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/QZLin/forward.git
+          # git branch main
+          # git switch main
+          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/QZLin/forward.git
 
-      #     # git push --set-upstream origin master --force
-      #     git push
-      #     Pop-Location
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+          # git push --set-upstream origin master --force
+          git push
+          Pop-Location
         with:
-          github_token: ${{ secrets.TOKEN }}
-          directory: forward
-          branch: main
-          repository: QZLin/forward
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v2
         with:
