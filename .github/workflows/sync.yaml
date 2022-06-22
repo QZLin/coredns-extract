@@ -54,7 +54,7 @@ jobs:
           git config --global user.email "qzlin01@163.com"
           git config --global user.name "QZLin"
 
-          git remote set-url origin https://$USERNAME:$TOKEN@github.com/qzlin/forward.git
+          git remote set-url origin https://${USERNAME}:${TOKEN}@github.com/qzlin/forward.git
 
           # git push --set-upstream origin master --force
           git push
