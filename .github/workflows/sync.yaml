@@ -50,7 +50,7 @@ jobs:
 
           # git branch main
           # git switch main
-          git remote set-url origin https://$QZLin:{{ secrets.GITHUB_TOKEN }}@github.com/QZLin/forward.git
+          git remote set-url origin https://QZLin:${{ secrets.GITHUB_TOKEN }}@github.com/QZLin/forward.git
 
           # git push --set-upstream origin master --force
           git push
