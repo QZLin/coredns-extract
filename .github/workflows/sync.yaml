@@ -44,8 +44,8 @@ jobs:
       - name: Commit and push
         run: |
           Push-Location forward
-          # git config --global user.email "qzlin01@163.com"
-          # git config --global user.name "QZLin"
+          git config --global user.email "qzlin01@163.com"
+          git config --global user.name "QZLin"
 
           # git branch main
           # git switch main
@@ -54,8 +54,6 @@ jobs:
           # git push --set-upstream origin master --force
           git push
           Pop-Location
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v2
         with:
