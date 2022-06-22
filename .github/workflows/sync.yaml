@@ -3,6 +3,8 @@ name: Sync Repo
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
+  schedule:
+    - cron: "0 0 * * *"
   push:
     branches: [main]
   #   pull_request:
@@ -41,13 +43,12 @@ jobs:
 
       - name: Extract forward and split history
         run: . ./actions.ps1
-        
+
       # - name: Setup ssh key
       #   run: |
       #     New-Item -ItemType Directory ~/.ssh -ErrorAction SilentlyContinue
       #     Write-Output "${{ secrets.BOT_ID_RSA }}" > ~/.ssh/id_rsa
       #     Write-Output "${{ secrets.BOT_ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
-
       - name: Pull and push
         run: |
           Push-Location forward
