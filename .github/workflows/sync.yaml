@@ -54,7 +54,7 @@ jobs:
           git config --global user.email "qzlin01@163.com"
           git config --global user.name "QZLin"
 
-          git remote set-url origin git push https://oauth2:${{ secrets.TOKEN }}@github.com/qzlin/forward
+          git remote set-url origin https://oauth2:${{ secrets.TOKEN }}@github.com/qzlin/forward
 
           git push
           Pop-Location
