@@ -1,11 +1,11 @@
 Push-Location $PSScriptRoot
 
-# git clone https://gitclone.com/github.com/coredns/coredns.git
-# git clone https://gitclone.com/github.com/qzlin/forward.git
+git clone https://gitclone.com/github.com/coredns/coredns.git
+git clone https://gitclone.com/github.com/qzlin/forward.git
 
 # local test repo cache
-git clone local_cache/coredns
-git clone local_cache/forward
+# git clone local_cache/coredns
+# git clone local_cache/forward
 
 # wget https://raw.githubusercontents.com/newren/git-filter-repo/main/git-filter-repo -O git-filter-repo.py
 
