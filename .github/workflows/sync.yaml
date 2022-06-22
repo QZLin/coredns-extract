@@ -44,8 +44,8 @@ jobs:
         
       - name: Setup ssh key
         run: |
-          Write-Output ${{ secrets.BOT_ID_RSA }} > ~/.ssh/id_rsa
-          Write-Output ${{ secrets.BOT_ID_RSA_PUB }} > ~/.ssh/id_rsa.pub
+          Write-Output "${{ secrets.BOT_ID_RSA }}" > ~/.ssh/id_rsa
+          Write-Output "${{ secrets.BOT_ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
 
       - name: Commit and push
         run: |
