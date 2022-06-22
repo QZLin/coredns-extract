@@ -52,9 +52,8 @@ jobs:
         run: |
           Push-Location forward
 
-          git remote set-url origin https://oauth2:${{ secrets.TOKEN }}@github.com/QZLin/forward
-          git push
-          
+          git push https://oauth2:${{ secrets.TOKEN }}@github.com/QZLin/forward
+
           Pop-Location
         # env:
         #   TOKEN: ${{ secrets.TOKEN }}

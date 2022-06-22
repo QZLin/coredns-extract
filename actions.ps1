@@ -17,6 +17,7 @@ Pop-Location
 
 Push-Location forward
 git pull ../coredns --allow-unrelated-histories
+git log
 Pop-Location
 
 
