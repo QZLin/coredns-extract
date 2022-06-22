@@ -29,6 +29,7 @@ jobs:
         with:
           repository: qzlin/forward
           path: forward
+          persist-credentials: false
           fetch-depth: 0
       - name: Get git-filter-repo
         run: Invoke-WebRequest https://raw.githubusercontent.com/newren/git-filter-repo/main/git-filter-repo -OutFile git-filter-repo.py
@@ -49,7 +50,7 @@ jobs:
 
           # git branch main
           # git switch main
-          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/QZLin/forward.git
+          git remote set-url origin https://$QZLin:{{ secrets.GITHUB_TOKEN }}@github.com/QZLin/forward.git
 
           # git push --set-upstream origin master --force
           git push
