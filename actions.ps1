@@ -5,6 +5,7 @@ Push-Location $PSScriptRoot
 
 # local test repo cache
 if (Test-Path local_cache) {
+    $local_debug = $true
     . ./clean.ps1
     git clone local_cache/coredns
     git clone local_cache/forward
@@ -13,11 +14,12 @@ if (Test-Path local_cache) {
 
 Push-Location coredns
 python ../git-filter-repo.py --path plugin/forward --subdirectory-filter plugin/forward --prune-empty always --force
+git log -3
 Pop-Location
 
 Push-Location forward
 git pull ../coredns --allow-unrelated-histories
-git log
+git log -3
 Pop-Location
 
 
