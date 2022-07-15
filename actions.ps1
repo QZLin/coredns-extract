@@ -21,7 +21,7 @@ Push-Location forward
 git pull ../coredns --allow-unrelated-histories
 git log -3
 ## Remove empty merge commit for actions server git
-if (-not $local_debug) {
+if (-not $local_debug -and $(git log -1 --format=%s) -eq "Merge ../coredns") {
     $last = git log -1 --skip=1 --format=%H
     git reset --hard $last
 }
