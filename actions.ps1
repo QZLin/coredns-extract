@@ -16,14 +16,14 @@ Push-Location coredns
 python ../git-filter-repo.py --path plugin/forward --subdirectory-filter plugin/forward --prune-empty always --force
 Write-Output "=========coredns [3]========="
 git log -3
-git config --list
+# git config --list
 Pop-Location
 
 Push-Location forward
 git pull ../coredns --allow-unrelated-histories --force -v
 Write-Output "=========forward [3]========="
 git log -3
-git config --list
+# git config --list
 ## Remove empty merge commit for actions server git
 if (-not $local_debug -and $(git log -1 --format=%s) -eq "Merge ../coredns") {
     $last = git log -1 --skip=1 --format=%H
