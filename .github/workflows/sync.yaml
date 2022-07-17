@@ -58,7 +58,7 @@ jobs:
         run: |
           Push-Location coredns
           git branch -M main
-          git push --set-upstream https://oauth2:${{ secrets.TOKEN }}@github.com/QZLin/forward main
+          git push --set-upstream https://oauth2:${{ secrets.TOKEN }}@github.com/QZLin/forward main --force
           Pop-Location
         # env:
         #   TOKEN: ${{ secrets.TOKEN }}
