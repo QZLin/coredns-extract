@@ -20,7 +20,7 @@ git config --list
 Pop-Location
 
 Push-Location forward
-git pull ../coredns --allow-unrelated-histories
+git pull ../coredns --allow-unrelated-histories --force -v
 Write-Output "=========forward [3]========="
 git log -3
 git config --list
