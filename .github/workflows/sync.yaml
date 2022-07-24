@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: Setup Env
         run: |
-          winget install --id Git.Git -e --source winget
+          choco upgrade git -y
           # Invoke-WebRequest https://github.com/git-for-windows/git/releases/download/v2.37.1.windows.1/PortableGit-2.37.1-64-bit.7z.exe -OutFile git.7z.exe
 
       - uses: actions/checkout@v3
