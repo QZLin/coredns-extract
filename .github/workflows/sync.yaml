@@ -28,10 +28,14 @@ jobs:
           git config --global init.defaultbranch main
 
       - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
       - uses: actions/checkout@v3
         with:
           repository: coredns/coredns
           path: coredns
+          persist-credentials: false
           fetch-depth: 0
       - uses: actions/checkout@v3
         with:
