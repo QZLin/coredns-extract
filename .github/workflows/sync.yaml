@@ -59,16 +59,19 @@ jobs:
       - name: Extract forward and split history
         run: . ./actions.ps1
 
-      # - name: Setup ssh key
-      #   run: |
-      #     New-Item -ItemType Directory ~/.ssh -ErrorAction SilentlyContinue
-      #     Write-Output "${{ secrets.BOT_ID_RSA }}" > ~/.ssh/id_rsa
-      #     Write-Output "${{ secrets.BOT_ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
+      - name: Setup repo ssh key
+        run: |
+          Write-Output "${{ secrets.BOT_SSH_DEPLOY_PRIVATE_KEY }}" > ~/.ssh/bot_id
+          git config --local core.sshCommand "~/.ssh/bot_id"
+          # New-Item -ItemType Directory ~/.ssh -ErrorAction SilentlyContinue
+          # Write-Output "${{ secrets.BOT_ID_RSA }}" > ~/.ssh/id_rsa
+          # Write-Output "${{ secrets.BOT_ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
       - name: Pull and push
         run: |
           Push-Location coredns
           git branch -M main
-          git push --set-upstream https://oauth2:${{ secrets.TOKEN }}@github.com/QZLin/forward main --force
+          git push --set-upstream git@github.com:QZLin/forward.git main --force
+          # git push --set-upstream https://oauth2:${{ secrets.TOKEN }}@github.com/QZLin/forward main --force
           Pop-Location
         # env:
         #   TOKEN: ${{ secrets.TOKEN }}
