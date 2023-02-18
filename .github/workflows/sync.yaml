@@ -71,7 +71,9 @@ jobs:
           Push-Location coredns
           git config core.sshCommand "ssh -i ~/.ssh/bot_id"
           Get-Item "~/.ssh/bot_id"
+          Get-Command ssh
           git config --list
+          git config --list --local
           git branch -M main
           git push --set-upstream git@github.com:QZLin/forward.git main --force
           # git push --set-upstream https://oauth2:${{ secrets.TOKEN }}@github.com/QZLin/forward main --force
