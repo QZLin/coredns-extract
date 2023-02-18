@@ -63,7 +63,7 @@ jobs:
         run: |
           New-Item -ItemType Directory ~/.ssh -ErrorAction SilentlyContinue
           Write-Output "${{ secrets.BOT_SSH_DEPLOY_PRIVATE_KEY }}" > ~/.ssh/bot_id
-          git config --local core.sshCommand "~/.ssh/bot_id"
+          git config --local core.sshCommand "ssh -i ~/.ssh/bot_id"
           
           # Write-Output "${{ secrets.BOT_ID_RSA }}" > ~/.ssh/id_rsa
           # Write-Output "${{ secrets.BOT_ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
