@@ -63,6 +63,7 @@ jobs:
         run: |
           New-Item -ItemType Directory ~/.ssh -ErrorAction SilentlyContinue
           Write-Output "${{ secrets.BOT_SSH_DEPLOY_PRIVATE_KEY }}" > ~/.ssh/bot_id
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
           
           # Write-Output "${{ secrets.BOT_ID_RSA }}" > ~/.ssh/id_rsa
           # Write-Output "${{ secrets.BOT_ID_RSA_PUB }}" > ~/.ssh/id_rsa.pub
