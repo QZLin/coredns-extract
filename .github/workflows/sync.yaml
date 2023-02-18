@@ -62,7 +62,8 @@ jobs:
       - name: Setup repo ssh key
         run: |
           New-Item -ItemType Directory ~/.ssh -ErrorAction SilentlyContinue
-          Write-Output "${{ secrets.BOT_SSH_DEPLOY_PRIVATE_KEY }}" > ~/.ssh/bot_id
+          $key="${{ secrets.BOT_SSH_DEPLOY_PRIVATE_KEY }}"
+          $key | Set-Content -NoNewline -Path ~/.ssh/bot_id
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           
           # Write-Output "${{ secrets.BOT_ID_RSA }}" > ~/.ssh/id_rsa
