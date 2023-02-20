@@ -62,6 +62,7 @@ jobs:
       - name: Setup repo ssh key
         run: |
           New-Item -ItemType Directory ~/.ssh -ErrorAction SilentlyContinue
+          New-Item ~/.ssh/bot_id
           python binary_tool.py -d --base64-input ${{ secrets.BOT_SSH_DEPLOY_PRIVATE_KEY }} -o (Get-Item ~/.ssh/bot_id)
           ssh-keyscan github.com >> ~/.ssh/known_hosts
 
