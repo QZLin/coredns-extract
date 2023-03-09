@@ -23,8 +23,8 @@ jobs:
 
     steps:
       - name: Cancel if reach condition
-        if: ${{ github.event_name=='push' && github.event.commits[0].message == 'update readme'}}
-        uses: andymckay/cancel-action@0.2
+        if: ${{ github.event_name=='push' && (github.event.commits[0].message == 'update readme' || github.event.commits[0].message=='update')}}
+        uses: andymckay/cancel-action@0.3
 
       - name: Setup Env
         run: |
