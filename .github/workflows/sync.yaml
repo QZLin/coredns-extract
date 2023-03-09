@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Cancel if reach condition
-        if: ${{ github.action_ref == 'update readme'}}
+        if: ${{ event.title == 'update readme'}}
         uses: andymckay/cancel-action@0.2
 
       - name: Setup Env

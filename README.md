@@ -2,3 +2,4 @@ This repo is used to automatically sync coredns plugin [forward](https://github.
 
 **sync job ran [2] times**
 
+[![Sync Repo](https://github.com/QZLin/coredns-extract/actions/workflows/sync.yaml/badge.svg)](https://github.com/QZLin/coredns-extract/actions/workflows/sync.yaml)
