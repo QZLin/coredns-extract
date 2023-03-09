@@ -33,10 +33,10 @@ jobs:
           fetch-depth: 0
       - name: Collect Info
         run: |
-          hash=(git log -1 --format='%h')
-          title=(git log -1 --format='%s')
-          title_tag=(git log -1 --format='%f')
-          body=(git log -1 --format='%b')
+          $hash=(git log -1 --format='%h')
+          $title=(git log -1 --format='%s')
+          $title_tag=(git log -1 --format='%f')
+          $body=(git log -1 --format='%b')
           echo title="$title" >> "$GITHUB_ENV"
           echo title_tag="$title_tag" >> "$GITHUB_ENV"
 
