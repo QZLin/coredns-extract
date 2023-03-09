@@ -31,6 +31,19 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
+      - name: Collect Info
+        run: |
+          hash=(git log -1 --format='%h')
+          title=(git log -1 --format='%s')
+          title_tag=(git log -1 --format='%f')
+          body=(git log -1 --format='%b')
+          echo title="$title" >> "$GITHUB_ENV"
+          echo title_tag="$title_tag" >> "$GITHUB_ENV"
+
+          if($title -ne "update readme"){exit 1}
+      - name: Cancel if reach condition
+        if: failure()
+        uses: andymckay/cancel-action@0.2
       - uses: actions/checkout@v3
         with:
           repository: coredns/coredns
@@ -46,13 +59,10 @@ jobs:
       - name: Get git-filter-repo
         run: Invoke-WebRequest https://github.com/newren/git-filter-repo/raw/main/git-filter-repo -OutFile git-filter-repo.py
 
-      - name: Set Git Info
+      - name: Set Git Info & Check Git config
         run: |
           git config --global user.email "qzlin01@163.com"
           git config --global user.name "QZLin"
-
-      - name: Check Git config
-        run: |
           git config --global --unset core.repositoryformatversion
           git config --list
 
@@ -82,9 +92,16 @@ jobs:
 
           git branch -M main
           git push --set-upstream git@github.com:QZLin/forward.git main --force
-          Pop-Location
-
           # git push --set-upstream https://oauth2:${{ secrets.TOKEN }}@github.com/QZLin/forward main --force
+          Pop-Location
+      - name: Update Readme
+        run: |
+          New-Item -ItemType Directory ~/.ssh -ErrorAction SilentlyContinue
+          New-Item ~/.ssh/self_id
+          python binary_tool.py -d --base64-input ${{ secrets.BOT_SSH_DEPLOY_SELF_PRIVATE_KEY }} -o (Get-Item ~/.ssh/self_id)
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config core.sshCommand "ssh -i ~/.ssh/self_id"
+          . ./update_readme.ps1
         # env:
         #   TOKEN: ${{ secrets.TOKEN }}
 

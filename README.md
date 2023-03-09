@@ -1,1 +1,4 @@
-* This repo is used to automatically sync coredns plugin [forward](https://github.com/QZLin/forward) using Github Actions
+This repo is used to automatically sync coredns plugin [forward](https://github.com/QZLin/forward) using Github Actions
+
+**sync job ran [0] times**
+
