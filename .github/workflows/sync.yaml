@@ -22,6 +22,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      - name: Cancel if reach condition
+        if: ${{ github.event_name == 'update readme'}}
+        uses: andymckay/cancel-action@0.2
+
       - name: Setup Env
         run: |
           # choco upgrade git -y
@@ -31,19 +35,17 @@ jobs:
         with:
           persist-credentials: false
           fetch-depth: 0
-      - name: Collect Info
-        run: |
-          $hash=(git log -1 --format='%h')
-          $title=(git log -1 --format='%s')
-          $title_tag=(git log -1 --format='%f')
-          $body=(git log -1 --format='%b')
-          echo title="$title" >> "$GITHUB_ENV"
-          echo title_tag="$title_tag" >> "$GITHUB_ENV"
+      # - name: Collect Info
+      #   run: |
+      #     $hash=(git log -1 --format='%h')
+      #     $title=(git log -1 --format='%s')
+      #     $title_tag=(git log -1 --format='%f')
+      #     $body=(git log -1 --format='%b')
+      #     echo title="$title" >> "$GITHUB_ENV"
+      #     echo title_tag="$title_tag" >> "$GITHUB_ENV"
 
-          if($title -eq "update readme"){exit 1}
-      - name: Cancel if reach condition
-        if: failure()
-        uses: andymckay/cancel-action@0.2
+      #     if($title -eq "update readme"){exit 1}
+
       - uses: actions/checkout@v3
         with:
           repository: coredns/coredns
