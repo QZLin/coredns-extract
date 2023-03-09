@@ -40,7 +40,7 @@ jobs:
           echo title="$title" >> "$GITHUB_ENV"
           echo title_tag="$title_tag" >> "$GITHUB_ENV"
 
-          if($title -ne "update readme"){exit 1}
+          if($title -eq "update readme"){exit 1}
       - name: Cancel if reach condition
         if: failure()
         uses: andymckay/cancel-action@0.2
