@@ -9,5 +9,5 @@ Set-Content -Path README.md -Value $new_content
 
 git add "README.md"
 git commit -m "update readme"
-git push
+git push --set-upstream git@github.com:QZLin/coredns-extract.git main
 Pop-Location
