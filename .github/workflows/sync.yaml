@@ -33,18 +33,18 @@ jobs:
           # choco upgrade git -y
           git config --global init.defaultbranch main
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: false
           fetch-depth: 0
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           repository: coredns/coredns
           path: coredns
           persist-credentials: false
           fetch-depth: 0
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           repository: qzlin/forward
           path: forward
