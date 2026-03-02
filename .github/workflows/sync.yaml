@@ -101,7 +101,7 @@ jobs:
         # env:
         #   TOKEN: ${{ secrets.TOKEN }}
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: debug-artifact
           path: forward
